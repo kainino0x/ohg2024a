@@ -102,9 +102,13 @@ const circle = new PIXI.Graphics();
 
 // Keypresses
 
+window.toggleMusic = () => {
+  music.paused = !music.paused;
+};
+
 window.addEventListener("keydown", (ev) => {
   if (ev.code === "KeyM") {
-    music.paused = !music.paused;
+    toggleMusic();
   }
 });
 
