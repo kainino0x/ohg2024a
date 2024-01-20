@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OHG 2024a</title>
+    <style>
+      body {
+        margin: 0;
+        background: #444;
+        color: white;
+
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      canvas {
+        aspect-ratio: 4 / 3;
+        max-width: 100vw;
+        max-height: 100vh;
+      }
+    </style>
+    <script src="https://unpkg.com/pixi.js@7.3.3/dist/pixi.js"></script>
+    <script src="https://unpkg.com/@pixi/math-extras@7.3.3/dist/math-extras.js"></script>
+    <script src="https://unpkg.com/@pixi/sound@5.2.2/dist/pixi-sound.js"></script>
+    <script type="module" src="main.js"></script>
+  </head>
+
+  <body>
+    <div id="divMain">
+
+    </div>
+    <table id="instructions">
+        <tr><td><kbd>&larr;</kbd> <kbd>&darr;</kbd> <kbd>&uarr;</kbd> <kbd>&rarr;</kbd><td>go
+        <tr><td><kbd>m</kbd><td>mute
+        <tr><td><kbd>click</kbd><td>click
+    </table>
+  </body>
+</html>
