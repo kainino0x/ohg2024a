@@ -54,7 +54,7 @@ let advanceRidgeTo;
   advanceRidgeTo = (time) => {
     if (lastTime < time) {
       advanceRidge();
-      lastTime += 50;
+      lastTime += 1000 / speed;
       return true;
     }
     return false;
@@ -104,11 +104,13 @@ window.addEventListener("keydown", (ev) => {
 
 // Frame
 
+let speed = 20;
 let time = 0;
 let nextRidgeDelta = 0;
 let hp = 100;
 app.ticker.add((delta) => {
   time += delta;
+  speed = 20 + (time / 100);
 
   skier.y = ridges[14].y;
   skier.rotation = keyboard.dir.x * 0.4;
@@ -120,6 +122,7 @@ app.ticker.add((delta) => {
   ridges[14].tint = pass ? 0x8888ff : 0xffff00;
 
   if (advanceRidgeTo(time)) {
+    console.log('speed', speed);
     ridges[14].tint = 0x8888ff;
     nextRidgeDelta = ridges[14].y - ridges[15].y;
     console.log(nextRidgeDelta, minHeightTarget, maxHeightTarget);
