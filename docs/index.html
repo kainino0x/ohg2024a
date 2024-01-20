@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>OHG 2024a</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       body {
         margin: 0;
@@ -22,6 +23,8 @@
         aspect-ratio: 4 / 3;
         max-width: 100vw;
         max-height: 100vh;
+
+        user-select: none;
       }
     </style>
     <script src="https://unpkg.com/pixi.js@7.3.3/dist/pixi.js"></script>
@@ -35,7 +38,7 @@
 
     </div>
     <table id="instructions">
-        <tr><td><kbd>&larr;</kbd> <kbd>&rarr;</kbd><td>tilt
+        <tr><td><kbd>&larr;</kbd><kbd>&rarr;</kbd>/touch<td>tilt
         <tr><td><kbd>m</kbd><td>mute
         <tr><td>blue<td>ok to make next step
         <tr><td>yellow<td>not ok to make next step

@@ -1,5 +1,7 @@
-import { collides } from "./collision.js";
-import { keyboard } from "./keyboard.js";
+import { dir, dirRegistry } from "./controls/direction.js";
+import * as arrows from "./controls/load/keyboard/arrows.js";
+import * as wasd from "./controls/load/keyboard/wasd.js";
+import * as touchleftright from "./controls/load/touch/leftright.js";
 
 // Setup
 
@@ -10,6 +12,10 @@ const app = new PIXI.Application({
 divMain.appendChild(app.view);
 
 PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
+
+arrows.register(dirRegistry);
+wasd.register(dirRegistry);
+touchleftright.register(dirRegistry, app.view);
 
 // Sound
 
@@ -113,8 +119,8 @@ app.ticker.add((delta) => {
   speed = 20 + (time / 100);
 
   skier.y = ridges[14].y;
-  skier.rotation = keyboard.dir.x * 0.4;
-  const midHeightTarget = -keyboard.dir.x * 10;
+  skier.rotation = dir().x * 0.4;
+  const midHeightTarget = -dir().x * 10;
   const minHeightTarget = midHeightTarget - 10.01;
   const maxHeightTarget = midHeightTarget + 10.01;
 
@@ -122,10 +128,8 @@ app.ticker.add((delta) => {
   ridges[14].tint = pass ? 0x8888ff : 0xffff00;
 
   if (advanceRidgeTo(time)) {
-    console.log('speed', speed);
     ridges[14].tint = 0x8888ff;
     nextRidgeDelta = ridges[14].y - ridges[15].y;
-    console.log(nextRidgeDelta, minHeightTarget, maxHeightTarget);
 
     if (!pass) {
       hp--;
